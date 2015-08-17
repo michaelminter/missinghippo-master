@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<head>
+  <title>Lost <%= @poster.name %> -  Missing Hippo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Create lost dog flyer and other resources for finding your lost pet">
+  <meta name="keywords" content="How to find your lost dog, lost dog and cat rescue, help reconnect families, spca, create lost dog flyer, lost dog network, lost dog resources">
+  <meta name="author" content="Michael Minter">
+  <meta name="url" content="http://missinghippo.com/<%= @poster.uri %>.html">
+
+  <meta name="og:type" content="website" />
+  <meta name="og:site_name" content="Find Lost Dog - Missing Hippo" />
+  <meta name="og:title" content="Lost <%= @poster.name %> -  Missing Hippo" />
+  <meta name="og:description" content="Create lost dog flyer and other resources for finding your lost pet" />
+  <meta name="og:url" content="http://missinghippo.com/<%= @poster.uri %>.html"/>
+
+  <meta property="og:title" content="Lost <%= @poster.name %> -  Missing Hippo"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="http://missinghippo.com/<%= @poster.uri %>.html"/>
+  <meta property="og:image" content="<%= @preview.nil? ? "http://res.cloudinary.com/#{ENV['RACK_ENV'] == 'development' ? 'missinghippo' : 'hfnqsrwbp'}/image/upload/w_300,h_200,c_fill/#{@poster.image_id}.#{@poster.image_format}" : 'http://placehold.it/600x400' %>"/>
+  <meta property="og:site_name" content="Find Lost Dog - Missing Hippo"/>
+  <meta property="fb:admins" content="USER_ID"/>
+  <meta property="og:description" content="Create lost dog flyer and other resources for finding your lost pet"/>
+
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+  <style type="text/css">
+    h1   { background:yellow;font-size:80px;line-height:100px;margin-bottom:20px;text-align:center;text-transform:uppercase; }
+    h2   { background:red;color:white;font-size:80px;line-height:100px;margin-top:20px;text-align:center;text-transform:uppercase; }
+    h3   { background:red;color:white;font-size:80px;line-height:100px;margin-bottom:20px;text-align:center;text-transform:uppercase; }
+    .image-upload { display:block;margin:0 auto;width:50%; }
+    .content-container { font-size:60px;line-height:80px;width:100%; }
+    .location_details { font-size:60px;font-weight:bold;line-height:80px;text-align:center; }
+    tr td { font-weight:bold;width:50%;vertical-align:top; }
+    tr td:first-child { font-weight:normal;padding-right:10px;text-align: right; }
+    <% if @preview == true %>
+    /*.container {*/
+      /*-moz-transform: scale(0.50, 0.50);*/
+      /*-webkit-transform: scale(0.5, 0.5);*/
+      /*-o-transform: scale(0.5, 0.5);*/
+      /*-ms-transform: scale(0.5, 0.5);*/
+      /*transform: scale(0.5, 0.5);*/
+      /*-moz-transform-origin: top left;*/
+      /*-webkit-transform-origin: top left;*/
+      /*-o-transform-origin: top left;*/
+      /*-ms-transform-origin: top left;*/
+      /*transform-origin: top left;*/
+
+      /*margin:0 auto;*/
+    /*}*/
+    <% end %>
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <% if @poster.reward == true %>
+      <div class="row-fluid">
+        <div class="span12">
+          <h3>Reward</h3>
+        </div>
+      </div>
+    <% else %>
+      <div class="row-fluid">
+        <div class="span12">
+          <h1>Lost Pet</h1>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="row-fluid image-container">
+      <div class="span12">
+        <img src="<%= @preview.nil? ? "http://res.cloudinary.com/#{ENV['RACK_ENV'] == 'development' ? 'missinghippo' : 'hfnqsrwbp'}/image/upload/w_600,h_400,c_fill/#{@poster.image_id}.#{@poster.image_format}" : 'http://placehold.it/600x400' %>" class="image-upload" />
+      </div>
+    </div>
+
+    <div class="clearfix"><br /></div>
+
+    <table border="0" cellpadding="0" cellspacing="0" class="content-container">
+      <tbody>
+      <% unless @poster.name.blank? %>
+        <tr>
+          <td>Name:</td>
+          <td><%= @poster.name %></td>
+        </tr>
+      <% end %>
+      <% unless @poster.breed.blank? %>
+        <tr>
+          <td>Breed:</td>
+          <td><%= @poster.breed %></td>
+        </tr>
+      <% end %>
+      <% unless @poster.gender.blank? %>
+        <tr>
+          <td>Gender:</td>
+          <td><%= @poster.gender == 1 ? 'Male' : 'Female' %></td>
+        </tr>
+      <% end %>
+      <% unless @poster.color.blank? %>
+        <tr>
+          <td>Color:</td>
+          <td><%= @poster.color %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+
+    <% unless @poster.location.blank? %>
+      <div class="row-fluid">
+        <div class="span12 location_details">
+          <img src="/image/flyer/location-alt-64.png"><%= @poster.location %>
+        </div>
+      </div>
+    <% end %>
+
+    <% unless @poster.contact_phone.blank? %>
+      <div class="row-fluid">
+        <div class="span12">
+          <h2><%= @poster.contact_phone %></h2>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="row-fluid">
+      <div class="span12">
+        <p>Created at <strong>MissingHippo.com</strong></p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

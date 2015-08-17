@@ -1,0 +1,26 @@
+<div class="row-fluid marketing">
+  <div class="span12">
+    <table class="table">
+      <thead>
+        <tr>
+          <th style="width:70px;"></th>
+          <th>Pet</th>
+          <th>Location</th>
+          <th>Contact</th>
+          <th>Created at</th>
+          <th style="width:210px;"></th>
+        </tr>
+      </thead>
+      <% @posters.each do |poster| %>
+        <tr>
+          <td><% unless poster.image_id.nil? %><a href="<%= "http://res.cloudinary.com/#{ENV['RACK_ENV'] == 'development' ? 'missinghippo' : 'hfnqsrwbp'}/image/upload/w_600,h_400,c_fill/#{poster.image_id}.#{poster.image_format}" %>"><img src="<%= "http://res.cloudinary.com/#{ENV['RACK_ENV'] == 'development' ? 'missinghippo' : 'hfnqsrwbp'}/image/upload/w_30,h_30,c_fill/#{poster.image_id}.#{poster.image_format}" %>" /></a><% end %></td>
+          <td><%= poster.name %></td>
+          <td><%= (poster.city.blank? && poster.state.blank? ? "#{poster.latitude[0..6]}, #{poster.longitude[0..7]}" : "#{poster.city}, #{poster.state}") %></td>
+          <td><img src="<%= poster.contact_gravatar_url(30) %>"> <a href="mailto:<%= poster.contact_email %>"><%= poster.contact_email %></a></td>
+          <td><%= relative_time poster.created_at %></td>
+          <td><a href="/<%= poster.uri %>" class="btn">VIEW</a> <a href="/<%= poster.uri %>.pdf" class="btn">PDF</a> <a href="/admin/fliers/<%= poster.id %>/delete" class="btn">DELETE</a></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

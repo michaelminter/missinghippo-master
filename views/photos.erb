@@ -1,0 +1,26 @@
+<div class="row-fluid">
+  <div class="span12">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>id</th>
+        <th>Image</th>
+        <th>Association</th>
+        <th></th>
+      </tr>
+      </thead>
+      <% @photos.each do |photo| %>
+        <tr>
+          <td><%= photo.id %></td>
+          <td>
+            <a href="<%= "http://res.cloudinary.com/#{ENV['RACK_ENV'] == 'development' ? 'missinghippo' : 'hfnqsrwbp'}/image/upload/w_600,h_400,c_fill/#{photo.cloudinary_id}.#{photo.format}" %>">
+              <img src="<%= "http://res.cloudinary.com/#{ENV['RACK_ENV'] == 'development' ? 'missinghippo' : 'hfnqsrwbp'}/image/upload/w_30,h_30,c_fill/#{photo.cloudinary_id}.#{photo.format}" %>" />
+            </a>
+          </td>
+          <td>Report</td>
+          <td><a href="/admin/photos/<%= photo.id %>/delete" class="btn">Delete</a></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

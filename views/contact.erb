@@ -1,0 +1,79 @@
+<li id="contact_us">
+  <section class="contact_us_intro intro">
+    <div class="black_over">
+      <div class="container text_center">
+        <div class="intro_pad">
+          <!--h1>Feedback is important</h1>
+          <h2>we always answer all questions</h2-->
+          <script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+          <!-- missinghippo.com -->
+          <ins class="adsbygoogle"
+               style="display:inline-block;width:728px;height:90px"
+               data-ad-client="ca-pub-7424434269432645"
+               data-ad-slot="1345193124"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="contact_us_main">
+    <div class="contact_us_top top_box_right"></div>
+    <div class="contact_us_mid">
+      <div class="container">
+        <h3 class="text_center">Contact us</h3>
+        <div class="lines sub_title text_center">read interesting posts on our blog</div>
+        <div class="google_map">
+          <div id="map_canvas"></div>
+          <script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
+          <script type="text/javascript">
+
+            var centerNL = new google.maps.LatLng(40.545809,-74.552222);
+            var myOptions = {
+              zoom: 12,
+              center: centerNL,
+              mapTypeId: google.maps.MapTypeId.ROADMAP,
+              mapTypeControl: false,
+              navigationControl: true,
+              navigationControlOptions: {
+                style: google.maps.NavigationControlStyle.ZOOM_PAN,
+                position: google.maps.ControlPosition.TOP_RIGHT
+              }
+            };
+
+            map = new google.maps.Map(document.getElementById('map_canvas'), myOptions);
+          </script>
+        </div>
+        <div class="form">
+          <div class="row-fluid">
+            <div class="span8">
+              <h4 class="bold">EMAIL US</h4>
+              <form action="sendmail.php" method="post">
+                <input type="text" name="name" value="" placeholder="Name" class="half" />
+                <input type="text" name="email" value="" placeholder="Mail" class="half" />
+                <textarea name="msg" placeholder="Message.."></textarea>
+                <input type="submit" value="SUBMIT MAIL" />
+                <div class="error_checker">
+                </div>
+              </form>
+            </div>
+            <div class="span4">
+              <h4 class="bold">MORE INFO</h4>
+              <div class="more_info_box">
+                (123) 555-5555<br />
+                info@domain.com<br />
+                skype.username<br />
+                John Doe<br />
+                Salt Lake City, UT<br />
+                87234<br />
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="contact_us_bot bot_box_right"><a href="#home" class="back2top"><i class="icon-chevron-up"></i></a></div>
+  </section>
+</li>

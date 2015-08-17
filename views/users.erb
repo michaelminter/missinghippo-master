@@ -1,0 +1,26 @@
+<div class="row-fluid marketing">
+  <div class="span12">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Email</th>
+        <th>Location</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Created at</th>
+        <th></th>
+      </tr>
+      </thead>
+      <% @users.each do |user| %>
+        <tr>
+          <td><img src="<%= user.gravatar_url(30) %>"> <a href="mailto:<%= user.email %>"><%= user.email %></a></td>
+          <td><%= (user.city.blank? && user.state.blank? ? "#{user.latitude}, #{user.longitude}" : "#{user.city}, #{user.state}") %></td>
+          <td><%= user.first_name %></td>
+          <td><%= user.last_name %></td>
+          <td><%= relative_time user.created_at %></td>
+          <td><a href="/admin/users/<%= user.id %>/delete" class="btn">DELETE</a></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+.rvmrc
+.powrc
+.idea
+.idea/
+.idea/*
+.DS_Store
+*/.DS_Store
+config/cloudinary.yml

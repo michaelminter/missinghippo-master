@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Find Lost Dog &middot; Missing Hippo Network</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Descriptions should be between 100 and 160 characters for search engines. -->
+  <meta name="description" content="Missing Hippo is an organization developed to find lost pets all across the world by providing content, tools, and a network of heroes anywhere in an effort to serve animal lovers everywhere.">
+  <!-- Meta Keywords are no longer used in search engines and can hurt a web page if they are spammy. They also help the competition see what the keywords have been optimized on this page. -->
+  <!--meta name="keywords" content="Lost dog, Lost dogs, Find my lost dog, How to find your lost dog, lost dog and cat rescue, help reconnect families, spca, create lost dog flyer, lost dog network, lost dog resources"-->
+  <meta name="author" content="Michael Minter">
+  <link rel="canonical" href="http://missinghippo.com" />
+  <meta name="og:type" content="website" />
+  <meta name="og:site_name" content="Missing Hippo" />
+  <meta name="og:title" content="Find Lost Dog" />
+  <meta name="og:description" content="Missing Hippo is an organization developed to find lost pets all across the world by providing content, tools, and a network of heroes anywhere in an effort to serve animal lovers everywhere." />
+  <meta name="og:url" content="http://missinghippo.com"/>
+  <meta name="url" content="http://missinghippo.com">
+  <meta name="msvalidate.01" content="5EA93A250A2B9883AF77C5E25127A9E7" />
+
+  <!-- Le styles -->
+  <link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
+  <link href="/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+  <link href="/css/custom.css" rel="stylesheet">
+  <link href="/css/pricing.css" rel="stylesheet">
+
+  <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+  <script src="/js/html5shiv.js"></script>
+  <![endif]-->
+
+  <!-- https://github.com/audreyr/favicon-cheat-sheet -->
+  <link rel="icon" sizes="16x16 32x32" href="/favicon.ico">
+  <!--[if IE]><link rel="shortcut icon" href="/favicon.ico"><![endif]-->
+
+  <link rel="apple-touch-icon-precomposed" href="/favicon-152.png">
+
+  <meta name="msapplication-TileColor" content="#FFFFFF">
+  <meta name="msapplication-TileImage" content="/favicon-144.png">
+
+  <!-- For iPad with high-resolution Retina display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/favicon-152.png">
+
+  <!-- For iPad with high-resolution Retina display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon-144.png">
+
+  <!-- For iPhone with high-resolution Retina display running iOS ≥ 7: -->
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/favicon-120.png">
+
+  <!-- For iPhone with high-resolution Retina display running iOS ≤ 6: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/favicon-114.png">
+
+  <!-- For first- and second-generation iPad: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/favicon-72.png">
+
+  <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="/favicon-57.png">
+
+  <link rel="icon" href="/favicon-32.png" sizes="32x32">
+</head>
+
+<body id="top">
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=217102648310081";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<%= erb :"partials/header" %>
+
+<%#= erb :"partials/feedback" %>
+
+<%= erb :"partials/map" %>
+
+<%= erb :"partials/advertisement" %>
+
+<%= erb :"partials/resources" %>
+
+<%= erb :"partials/advertisement" %>
+
+<%#= erb :"partials/form" %>
+
+<%#= erb :"partials/advertisement" %>
+
+<%= erb :"partials/join" %>
+
+<%= erb :"partials/feedback" %>
+
+<%= erb :"partials/social" %>
+
+<%= erb :"partials/contact" %>
+
+<%= erb :"partials/sponsor" %>
+
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script language=javascript>
+  <!--
+  var mobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
+  if (mobile) {
+    document.location = "/mobile";
+  }
+  -->
+</script>
+
+<script type="text/javascript">
+  CLOUDINARY_ID = '<%= ENV['RACK_ENV'] == 'development' ? 'missinghippo' : 'hfnqsrwbp' %>';
+
+  localStorage.getItem('last_clicked') == null ? localStorage.setItem('last_clicked', '{}') : '';
+  localStorage.getItem('last_flier_generated') == null ? localStorage.setItem('last_flier_generated', '{}') : '';
+</script>
+
+<script type="text/javascript" src="/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="/bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript" src="/js/jquery.scrollTo.js"></script>
+<script type="text/javascript" src="/js/masonry.pkgd.min.js"></script>
+
+<script type="text/javascript" src="/js/index.js"></script>
+<!--script type="text/javascript" src="/js/flyer.js"></script-->
+<script type="text/javascript" src="/js/map.js"></script>
+<script type="text/javascript" src="/js/join.js"></script>
+<script type="text/javascript" src="/js/contact.js"></script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-43007982-1', 'missinghippo.com');
+  ga('send', 'pageview');
+
+</script>
+
+<script>
+  // Include the UserVoice JavaScript SDK (only needed once on a page)
+  UserVoice=window.UserVoice||[];(function(){var uv=document.createElement('script');uv.type='text/javascript';uv.async=true;uv.src='//widget.uservoice.com/6gqyJKEdxK3LffaCaKzqg.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(uv,s)})();
+
+  //
+  // UserVoice Javascript SDK developer documentation:
+  // https://www.uservoice.com/o/javascript-sdk
+  //
+
+  // Set colors
+  UserVoice.push(['set', {
+    accent_color: '#448dd6',
+    trigger_color: 'white',
+    trigger_background_color: 'rgba(46, 49, 51, 0.6)'
+  }]);
+
+  // Identify the user and pass traits
+  // To enable, replace sample data with actual user traits and uncomment the line
+  UserVoice.push(['identify', {
+    //email:      'john.doe@example.com', // User’s email address
+    //name:       'John Doe', // User’s real name
+    //created_at: 1364406966, // Unix timestamp for the date the user signed up
+    //id:         123, // Optional: Unique id of the user (if set, this should not change)
+    //type:       'Owner', // Optional: segment your users by type
+    //account: {
+    //  id:           123, // Optional: associate multiple users with a single account
+    //  name:         'Acme, Co.', // Account name
+    //  created_at:   1364406966, // Unix timestamp for the date the account was created
+    //  monthly_rate: 9.99, // Decimal; monthly rate of the account
+    //  ltv:          1495.00, // Decimal; lifetime value of the account
+    //  plan:         'Enhanced' // Plan name for the account
+    //}
+  }]);
+
+  // Add default trigger to the bottom-right corner of the window:
+  UserVoice.push(['addTrigger', { mode: 'contact', trigger_position: 'bottom-right' }]);
+
+  // Or, use your own custom trigger:
+  //UserVoice.push(['addTrigger', '#id', { mode: 'contact' }]);
+
+  // Autoprompt for Satisfaction and SmartVote (only displayed under certain conditions)
+  UserVoice.push(['autoprompt', {}]);
+</script>
+
+<script type="text/javaScript">
+  (function(e,t,r){if(!r.version&&!r.__ai){e.debuggify=r;var a,n,s,o="debuggify",g=Array.prototype.slice,i={};r._e=[];s=e.onerror;e.onerror=function(){r._e&&r._e.push(arguments);return s?s.apply(this,arguments):void 0};r.init=function(e,s,c){function u(e,t,r,a){var n=r.split(".");if(2==n.length){e=e[n[0]];r=n[1]}e[r]=function(){var e=a?a+"#"+r:r;t.push([e].concat(g.call(arguments,0)))}}function p(e,t,r,a){var n,s=r.split(" ");for(n=0;s.length>n;n++)u(e,t,s[n],a)}a=t.createElement("script");a.type="text/javascript";a.async=!0;a.src="https://cdn.debuggify.net/js/"+e+"/debuggify.logger.http.js";n=t.getElementsByTagName("script")[0];n.parentNode.insertBefore(a,n);var d=r;c!==void 0?d=r[c]=[]:c=o;d.Logger=d.Logger||[];var l=d.Logger;p(d,d,"Logger.get setEnv addTransport setDefaults onload alias metadata",null);var f=function(e){var t=this,r=i[n],a={},n=t&&t.namespace?t.namespace+"__"+e:e;if(r!==void 0)return i[n];p(a,l,"setLevel setFlag get message setNamespace addTransport sendToCollector report track untrack setUID isTracked genericMessage attach log warn error info debug",n);a.name=e;a.get=f;a.namespace=n;a.parent=t;i[n]=a;l.push(["get"].concat(g.call(arguments,0)));return a};l.get=f};r.__ai="0.2.0"}})(window,document,window.debuggify||[]);debuggify.init("b10789ae36eae8c95a175163a60b6569");
+</script>
+
+</body>
+</html>

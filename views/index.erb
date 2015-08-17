@@ -1,0 +1,80 @@
+<div class="jumbotron">
+  <h1>Sinatra app with Twitter Bootstrap & jQuery</h1>
+  <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+  <a class="btn btn-large btn-success" href="#">Sign up today</a>
+</div>
+
+<hr>
+
+<form method="POST" enctype="multipart/form-data" id="poster_form">
+  <div class="row-fluid marketing">
+    <div class="span6">
+      <p>
+        <label>Layout</label>
+        <input type="text" name="layout_id" />
+      </p>
+      <p>
+        <label>Email</label>
+        <input type="text" name="email" />
+      </p>
+      <p>
+        <label>Phone</label>
+        <input type="text" name="phone" />
+      </p>
+      <p>
+        <label>Name</label>
+        <input type="text" name="name" />
+      </p>
+      <p>
+        <label>Color</label>
+        <input type="text" name="color" />
+      </p>
+      <p>
+        <label>Note</label>
+        <input type="text" name="note" />
+      </p>
+    </div>
+
+    <div class="span6">
+      <p>
+        <label>Photo</label>
+        <input type="file" name="image" />
+      </p>
+    </div>
+  </div>
+  <div class="row-fluid marketing">
+    <div class="span12">
+      <input type="submit" value="SUBMIT" />
+      <div id="progress"></div>
+    </div>
+  </div>
+</form>
+
+<script type="text/javascript">
+  function progressHandlingFunction(e) {
+    if (e.lengthComputable) {
+      var done = e.position || e.loaded, total = e.totalSize || e.total;
+      $('#progress').html('xhr.upload progress: ' + done + ' / ' + total + ' = ' + (Math.floor(done/total*1000)/10) + '%');
+    }
+  }
+
+  $('#poster_form').submit(function()
+  {
+    var form_data = new FormData($('#poster_form')[0]);
+
+    console.log(form_data);
+
+    var $request = $.ajax({ url: '/', cache: false, type: 'POST', dataType: 'JSON', data: form_data, contentType: false, processData: false, xhr: function() {  // custom xhr
+      var myXhr = $.ajaxSettings.xhr();
+      if (myXhr.upload) { // check if upload property exists
+        myXhr.upload.addEventListener('progress', progressHandlingFunction, false); // for handling the progress of the upload
+      }
+      return myXhr;
+    } });
+
+    $request.success(function(data){
+      console.log(data);
+    });
+    return false;
+  });
+</script>

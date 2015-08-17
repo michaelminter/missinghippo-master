@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Find Lost Dog &middot; Missing Hippo Network</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
+  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+  <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
+  <script type="text/javascript">
+    CLOUDINARY_ID = '<%= ENV['RACK_ENV'] == 'development' ? 'missinghippo' : 'hfnqsrwbp' %>';
+  </script>
+  <link rel="stylesheet" href="/css/mobile.css" />
+  <script type="text/javascript" src="/js/mobile.js"></script>
+</head>
+<body>
+
+<div data-role="page" data-control-title="HOME" id="map-page">
+  <div data-role="header" data-theme="b" data-position="fixed">
+    <a href="#join-dialog" data-icon="plus" data-theme="b">Join</a>
+    <h1>Missing Hippo</h1>
+    <a href="#about-dialog" data-icon="info" data-theme="b">About</a>
+  </div>
+
+  <div data-role="content" id="map_canvas"></div><!-- /content -->
+
+  <div id="adspace-container">
+    <script type="text/javascript"><!--
+    google_ad_client = "ca-pub-7424434269432645";
+    /* mh_mobile */
+    google_ad_slot = "3909452724";
+    google_ad_width = 320;
+    google_ad_height = 50;
+    //-->
+    </script>
+    <script type="text/javascript"
+            src="//pagead2.googlesyndication.com/pagead/show_ads.js">
+    </script>
+  </div>
+
+  <div data-role="footer" data-theme="b" data-position="fixed">
+    <div data-role="navbar">
+      <ul>
+        <li><a href="#create-page" data-icon="edit" data-rel="dialog" id="create-flier-button">Report Missing Pet</a></li>
+        <!--li><a href="#sighting-page" data-icon="star" data-rel="dialog" id="report-sighting-button">Report Sighting</a></li>
+        <li><a href="#found-page" data-icon="gear" data-rel="dialog" id="report-found-button">Report Found</a></li-->
+      </ul>
+    </div><!-- /navbar -->
+  </div><!-- /footer -->
+</div>
+
+<div data-role="page" data-control-title="HOME" id="create-page">
+  <div data-role="header" data-theme="b" data-position="fixed">
+    <h1>Create Flier</h1>
+  </div>
+  <div data-role="content">
+    <form method="POST" enctype="multipart/form-data" id="flier_form">
+      <input type="hidden" name="latitude" id="flier_latitude" />
+      <input type="hidden" name="longitude" id="flier_longitude" />
+      <input type="hidden" name="source" value="mobile" />
+
+      <label>Contact's Full Name</label>
+      <input type="text" name="contact_name" />
+
+      <label>Contact's Email <span class="required">*</span></label>
+      <input type="text" name="contact_email" />
+
+      <label>Contact's Phone</label>
+      <input type="text" name="contact_phone" />
+
+      <label>Pet Type</label>
+      <select name="type">
+        <option value="1">Dog</option>
+        <option value="2">Cat</option>
+        <option value="3">Other</option>
+      </select>
+
+      <label>Pet Name <span class="required">*</span></label>
+      <input type="text" name="name" />
+
+      <label>Breed</label>
+      <input type="text" name="breed" />
+
+      <label>Gender</label>
+      <select name="gender"><option value=""></option><option value="1">Male</option><option value="2">Female</option></select>
+
+      <label>Age</label>
+      <input type="text" name="age" />
+
+      <label>Color</label>
+      <input type="text" name="color" />
+
+      <label>Neighborhood / Location Details</label>
+      <input type="text" name="location" />
+
+      <label>Would you like to reward finder?</label>
+      <select name="reward"><option value="false">No</option><option value="true">Yes</option></select>
+
+      <label>Photo ( Horizontal forced )</label>
+      <input type="file" name="image" id="poster_image" />
+
+      <input type="checkbox" name="join_network" value="true" checked="checked" style="float:left;margin-right:10px;" id="flier_join_network" />
+      <label for="flier_join_network">Would you like to receive messages when a pet goes missing in your neighborhood?</label>
+
+      <br />
+
+      <button onclick="create_flier(); return false;" data-theme="a" id="submit-flier-button">CREATE FLIER</button>
+    </form>
+  </div>
+</div>
+
+<div data-role="page" data-control-title="HOME" id="sighting-page">
+  <div data-role="header" data-theme="b" data-position="fixed">
+    <h1>Report Sighting</h1>
+  </div>
+</div>
+
+<div data-role="page" data-control-title="HOME" id="found-page">
+  <div data-role="header" data-theme="b" data-position="fixed">
+    <h1>Report Found</h1>
+  </div>
+</div>
+
+<div data-role="dialog" id="join-dialog">
+  <div data-role="header" data-theme="b" data-position="fixed">
+    <h1>Join Network</h1>
+  </div>
+  <div data-role="content">
+    <form method="POST" id="join_form">
+      <label>First Name</label>
+      <input type="text" name="first_name" />
+
+      <label>Last Name</label>
+      <input type="text" name="last_name" />
+
+      <label>Email</label>
+      <input type="email" name="email" />
+
+      <label>Zip Code</label>
+      <input type="number" name="zip_code" />
+
+      <br />
+
+      <button onclick="join_network(); return false;" data-theme="a" id="join-network-button">Receive Updates</button>
+    </form>
+  </div>
+</div>
+
+<div data-role="dialog" id="about-dialog">
+  <div data-role="header" data-theme="b" data-position="fixed">
+    <h1>About</h1>
+  </div>
+  <div data-role="content">
+    <p>Missing Hippo is an organization developed to find lost pets all across the world.</p>
+    <p>Every year millions of families become disconnected from their animal companions. By joining the Missing Hippo Network, we can all make an impact on rescuing lost dogs.</p>
+    <p>We provide content, tools, and a network of heroes anywhere in an effort to serve animal lovers everywhere.</p>
+    <p>Our network has aided in the return of hundreds of animal family members.</p>
+    <p>Thank you for stopping by.</p>
+    <p style="text-align: center;">
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+      <input type="hidden" name="cmd" value="_donations">
+      <input type="hidden" name="business" value="mothore@gmail.com">
+      <input type="hidden" name="lc" value="US">
+      <input type="hidden" name="item_name" value="Missing Hippo">
+      <input type="hidden" name="no_note" value="0">
+      <input type="hidden" name="currency_code" value="USD">
+      <input type="hidden" name="bn" value="PP-DonationsBF:btn_donate_LG.gif:NonHostedGuest">
+      <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+      <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+    </form>
+    </p>
+    <p style="text-align: center;"><strong>Brought to you by <a href="http://codekindness.com" data-ajax="false" title="CodeKindess" target="_blank" data-mce-href="http://codekindness.com">CodeKindness</a></strong></p>
+  </div>
+</div>
+
+<div data-role="dialog" id="report-dialog">
+  <div data-role="header" data-theme="b" data-position="fixed">
+    <h1>Good Job</h1>
+  </div>
+  <div data-role="content">
+    <p>You're awesome! Now, please provide a way for the pet's owner to contact you.</p>
+
+    <form method="POST" enctype="multipart/form-data" id="report_form">
+      <label>Your Name</label>
+      <input type="text" name="name" />
+
+      <label>Email</label>
+      <input type="email" name="email" />
+
+      <label>Phone Number</label>
+      <input type="text" name="phone" />
+
+      <label>Details</label>
+      <textarea name="details"></textarea>
+
+      <label>Photo</label>
+      <input type="file" name="image" id="file" />
+
+      <br />
+
+      <button onclick="report('sighting'); return false;" data-theme="a" id="confirm-sighting-button">Report Sighting</button>
+      <button onclick="report('found'); return false;" data-theme="b" id="confirm-found-button">Report Found</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-43007982-1', 'missinghippo.com');
+  ga('send', 'pageview');
+
+</script>
+
+<script type="text/javaScript">
+  (function(e,t,r){if(!r.version&&!r.__ai){e.debuggify=r;var a,n,s,o="debuggify",g=Array.prototype.slice,i={};r._e=[];s=e.onerror;e.onerror=function(){r._e&&r._e.push(arguments);return s?s.apply(this,arguments):void 0};r.init=function(e,s,c){function u(e,t,r,a){var n=r.split(".");if(2==n.length){e=e[n[0]];r=n[1]}e[r]=function(){var e=a?a+"#"+r:r;t.push([e].concat(g.call(arguments,0)))}}function p(e,t,r,a){var n,s=r.split(" ");for(n=0;s.length>n;n++)u(e,t,s[n],a)}a=t.createElement("script");a.type="text/javascript";a.async=!0;a.src="https://cdn.debuggify.net/js/"+e+"/debuggify.logger.http.js";n=t.getElementsByTagName("script")[0];n.parentNode.insertBefore(a,n);var d=r;c!==void 0?d=r[c]=[]:c=o;d.Logger=d.Logger||[];var l=d.Logger;p(d,d,"Logger.get setEnv addTransport setDefaults onload alias metadata",null);var f=function(e){var t=this,r=i[n],a={},n=t&&t.namespace?t.namespace+"__"+e:e;if(r!==void 0)return i[n];p(a,l,"setLevel setFlag get message setNamespace addTransport sendToCollector report track untrack setUID isTracked genericMessage attach log warn error info debug",n);a.name=e;a.get=f;a.namespace=n;a.parent=t;i[n]=a;l.push(["get"].concat(g.call(arguments,0)));return a};l.get=f};r.__ai="0.2.0"}})(window,document,window.debuggify||[]);debuggify.init("b10789ae36eae8c95a175163a60b6569");
+</script>
+
+</body>
+</html>

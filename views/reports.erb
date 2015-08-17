@@ -1,0 +1,36 @@
+<div class="row-fluid marketing">
+  <div class="span12">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>id</th>
+        <th>Flier</th>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone Number</th>
+        <th>Created at</th>
+        <th></th>
+      </tr>
+      </thead>
+      <% @reports.each do |report| %>
+        <tr>
+          <td><%= report.id %></td>
+          <td><% unless report.flier.nil? %><a href="/<%= report.flier.uri %>.html"><img src="<%= "http://res.cloudinary.com/#{ENV['RACK_ENV'] == 'development' ? 'missinghippo' : 'hfnqsrwbp'}/image/upload/w_30,h_30,c_fill/#{report.flier.image_id}.#{report.flier.image_format}" %>" /></a><% end %></td>
+          <td>
+            <% unless report.photo.nil? %>
+              <a href="<%= "http://res.cloudinary.com/#{ENV['RACK_ENV'] == 'development' ? 'missinghippo' : 'hfnqsrwbp'}/image/upload/w_600,h_400,c_fill/#{report.photo.cloudinary_id}.#{report.photo.format}" %>">
+                <img src="<%= "http://res.cloudinary.com/#{ENV['RACK_ENV'] == 'development' ? 'missinghippo' : 'hfnqsrwbp'}/image/upload/w_30,h_30,c_fill/#{report.photo.cloudinary_id}.#{report.photo.format}" %>" />
+              </a>
+            <% end %>
+          </td>
+          <td><%= report.name %></td>
+          <td><%= report.email %></td>
+          <td><%= report.phone %></td>
+          <td><%= report.created_at %></td>
+          <td><a href="/admin/reports/<%= report.id %>/delete" class="btn">Delete</a></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

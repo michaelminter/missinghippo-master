@@ -1,0 +1,20 @@
+<div class="row-fluid marketing">
+  <div class="span12">
+    <table border="1" style="padding:10px;width:100%;">
+      <thead>
+      <tr>
+        <th>id</th>
+        <th>Email</th>
+        <th>Zip Code</th>
+      </tr>
+      </thead>
+      <% @network.each do |user| %>
+        <tr>
+          <td><%= user.id %></td>
+          <td><%= user.email %></td>
+          <td><%= user.zip_code %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

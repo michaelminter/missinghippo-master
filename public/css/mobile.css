@@ -1,0 +1,11 @@
+#map_canvas {
+  height:100%;
+  padding:0;
+  width:100%;
+}
+
+#adspace-container {
+  background: #333333;
+  padding-top:3px;
+  text-align: center;
+}

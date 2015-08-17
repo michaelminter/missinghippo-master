@@ -1,0 +1,215 @@
+<div id="map" class="partial">
+  <div id="map-keys">
+    <ul>
+      <li id="key-shelters">Shelters</li>
+      <li id="key-vets">Veterinarians</li>
+      <li id="key-shops">Pet Stores</li>
+      <li id="key-pets">Missing Pets</li>
+    </ul>
+    <div id="key-content">Click an icon on the map<br />to see more content.</div>
+  </div>
+
+  <div id="map-overlay-ad-container">
+    <div id="ad-container-hide-button"><span>X  Hide Ad</span></div>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- missinghippo.com map overlay -->
+    <ins class="adsbygoogle"
+         style="display:inline-block;width:300px;height:250px"
+         data-ad-client="ca-pub-7424434269432645"
+         data-ad-slot="1986467128"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+
+
+  <div id="map_canvas"></div>
+  <div class="container">
+    <!--div class="row">
+      <div class="span12">
+        <h2>Network Map</h2>
+      </div>
+    </div-->
+    <div class="row">
+      <div class="span3" style="position:relative">
+        <a href="#myModal" id="create-flier-map-button" role="button" class="btn btn-large btn-primary" data-toggle="modal">Post Lost or Found Pet</a>
+        <img src="/image/help-24.png" alt="Getting Started" id="clickable-help-icon" />
+        <!--a href="#" class="btn btn-inverse">Report Sighting</a-->
+        <!--a href="#" class="btn btn-inverse">Report Found</a-->
+      </div>
+      <div class="span9 text-right search-container">
+        <form class="form-search" id="map-form">
+          <span class="field-container" style="display:none;">
+            <input type="checkbox" name="other_sources" id="other_sources_checkbox" checked="checked" class="map-form-checkbox" value="true" data-group="other_sources">
+            <label for="other_sources_checkbox">Pet Grooming</label>
+          </span>
+          <span class="field-container">
+            <input type="checkbox" name="veterinary_clinics" id="veterinary_clinics_checkbox" checked="checked" class="map-form-checkbox" value="true" data-group="veterinary_clinics">
+            <label for="veterinary_clinics_checkbox">Veterinary Clinics</label>
+          </span>
+          <span class="field-container">
+            <input type="checkbox" name="pet_stores" id="pet_stores_checkbox" checked="checked" class="map-form-checkbox" value="true" data-group="pet_stores">
+            <label for="pet_stores_checkbox">Pet Stores</label>
+          </span>
+          <span class="field-container">
+            <input type="checkbox" name="animal_shelters" id="animal_shelters_checkbox" checked="checked" class="map-form-checkbox" value="true" data-group="animal_shelters">
+            <label for="animal_shelters_checkbox">Animal Shelters</label>
+          </span>
+          <span class="field-container">
+            <input type="checkbox" name="missing_pets" id="missing_pets_checkbox" checked="checked" class="map-form-checkbox" value="true" data-group="pets">
+            <label for="missing_pets_checkbox">Missing Pets</label>
+          </span>
+          <div class="input-append" style="display:none;">
+            <input type="text" name="address" placeholder="Address" class="span2 search-query" id="map-address">
+            <input type="submit" class="btn" id="map-form-submit-button" value="Search">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Create Flier</h3>
+  </div>
+  <div class="modal-body">
+    <p><strong>Just so you know</strong> the pet icon will be positioned based on the center point of the neighborhood map. To get the best results: close this modal, zoom in to the street level, and then come back to create a flier.</p>
+    <ul class="modal-errors" style="display:none;"></ul>
+    <form method="POST" enctype="multipart/form-data" id="flier_form">
+      <input type="hidden" name="latitude" id="flier_latitude" />
+      <input type="hidden" name="longitude" id="flier_longitude" />
+      <input type="hidden" name="source" value="landing_page_modal" />
+
+      <div id="flier_found_wrapper">
+        <input type="radio" name="found" value="false" id="flier_found_false" checked="checked" /> <label for="flier_found_false">Lost</label>
+        <input type="radio" name="found" value="true" id="flier_found_true" /> <label for="flier_found_true">Found</label>
+      </div>
+
+      <div style="clear:both;"></div>
+
+      <label>Contact's Full Name</label>
+      <input type="text" name="contact_name" />
+
+      <label>Contact's Email <span class="required">*</span></label>
+      <input type="text" name="contact_email" />
+
+      <label>Contact's Phone</label>
+      <input type="text" name="contact_phone" />
+
+      <label>Pet Type</label>
+      <select name="type">
+        <option value="1">Dog</option>
+        <option value="2">Cat</option>
+        <option value="3">Other</option>
+      </select>
+
+      <div id="flier_name_wrapper">
+        <label>Pet Name <span class="required">*</span></label>
+        <input type="text" name="name" id="flier_name" />
+      </div>
+
+      <div id="flier_breed_wrapper">
+        <label>Breed</label>
+        <input type="text" name="breed" id="flier_breed" />
+      </div>
+
+      <div id="flier_gender_wrapper">
+        <label>Gender</label>
+        <select name="gender" id="flier_gender"><option value=""></option><option value="1">Male</option><option value="2">Female</option></select>
+      </div>
+
+      <div id="flier_age_wrapper">
+        <label>Age</label>
+        <input type="text" name="age" id="flier_age" />
+      </div>
+
+      <div id="flier_color_wrapper">
+        <label>Color</label>
+        <input type="text" name="color" id="flier_color" />
+      </div>
+
+      <label>Neighborhood / Location Details</label>
+      <input type="text" name="location" />
+
+      <div id="flier_reward_wrapper">
+        <label>Would you like to reward finder?</label>
+        <select name="reward" id="flier_reward"><option value="false">No</option><option value="true">Yes</option></select>
+      </div>
+
+      <label>Photo ( Horizontal forced )</label>
+      <input type="file" name="image" id="poster_image" />
+
+      <br style="clear:both;" />
+      <br style="clear:both;" />
+
+      <input type="checkbox" name="join_network" value="true" checked="checked" style="float:left;margin-right:10px;" />
+      <label for="poster_join_network">Would you like to receive messages when a pet goes missing in your neighborhood?</label>
+
+      <div class="fb-like fb-like-create-flier" data-href="https://www.facebook.com/MissingHippo" data-width="" data-height="" data-colorscheme="light" data-layout="standard" data-action="like" data-show-faces="true" data-send="false"></div>
+
+      <br />
+
+      <!--button onclick="create_flier(); return false;" data-theme="a" id="submit-flier-button">CREATE FLIER</button-->
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <button onclick="create_flier(); return false;" class="btn btn-primary" id="map-create-flier-button">Create Flier</button>
+  </div>
+</div>
+
+<!-- Modal -->
+<div id="notify-owner-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Contact Poster</h3>
+  </div>
+  <div class="modal-body">
+    <p><strong>Congrats!</strong> Now, please provide a way for the poster to contact you.</p>
+
+    <form method="POST" enctype="multipart/form-data" id="report_form">
+      <label>Your Name</label>
+      <input type="text" name="name" />
+
+      <label>Email</label>
+      <input type="email" name="email" />
+
+      <label>Phone Number</label>
+      <input type="text" name="phone" />
+
+      <label>Details</label>
+      <textarea name="details"></textarea>
+
+      <label>Photo</label>
+      <input type="file" name="image" id="file" />
+
+      <div class="fb-like fb-like-create-flier" data-href="https://www.facebook.com/MissingHippo" data-width="The pixel width of the plugin" data-height="The pixel height of the plugin" data-colorscheme="light" data-layout="standard" data-action="like" data-show-faces="true" data-send="false"></div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <button class="btn btn-primary" onclick="report('sighting'); return false;" data-theme="a" id="confirm-sighting-button">Report Sighting</button>
+    <button class="btn btn-success" onclick="report('found'); return false;" data-theme="b" id="confirm-found-button">Report Found</button>
+  </div>
+</div>
+
+<div id="getting-started-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Getting Started</h3>
+  </div>
+  <div class="modal-body">
+    <p>Glad you made it. Here's how to get started finding your lost pet.</p>
+    <ul>
+      <li>The map icons match up with different pet services in your neighborhood. Click on one of these icons to <strong>get contact information</strong> and call to see if anybody has seen your lost pet. <em>There are also places you'll want to pass out hard copy fliers to later (pet stores, etc).</em><br /><br /></li>
+      <li>Missing pets in your neighborhood will be shown with their photo as an icon. Click on one of these icons to <strong>report seeing or finding a lost pet.</strong><br /><br /></li>
+      <li>Click <em>"Post Lost or Found Pet"</em> to <strong>register missing or found pet</strong> on the neighborhood map. You'll receive an instant notification to your inbox or mobile phone as soon as somebody responds to your post.</li>
+    </ul>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+  </div>
+</div>

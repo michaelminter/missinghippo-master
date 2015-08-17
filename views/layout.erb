@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Missing Hippo Admin</title>
+  <script src="/js/jquery-1.9.1.min.js" type="text/javascript"></script>
+  <script src="/bootstrap/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+</head>
+<body style="padding-top: 50px;">
+
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+
+      <a class="brand" href="/">Missing Hippo</a>
+
+      <ul class="nav">
+        <li><a href="/">Home</a></li>
+        <li><a href="/admin/users">Users</a></li>
+        <li><a href="/admin/posters">Fliers</a></li>
+        <li><a href="/admin/reports">Reports</a></li>
+        <li><a href="/admin/photos">Photos</a></li>
+      </ul>
+
+      <ul class="nav pull-right">
+        <li class="dropdown">
+          <a href="#"
+             class="dropdown-toggle"
+             data-toggle="dropdown">
+            Hello, Michael
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Login</a></li>
+            <li><a href="#">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <%if @error then %>
+    <div class="alert alert-error"><%=@error%></div>
+  <% end %>
+  <%= yield %>
+</div>
+</body>
+</html>
